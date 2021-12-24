@@ -1,27 +1,9 @@
 <template>
-  <a-layout class="layout" style="min-height: 100vh">
-    <a-layout-header>
-      <a-menu
-        v-model:selectedKeys="selectedKeys"
-        theme="dark"
-        mode="horizontal"
-        :style="{ lineHeight: '64px' }"
-        @select="choose"
-      >
-        <template v-for="nav in navs" :key="nav.key">
-          <a-menu-item>
-            {{ nav.displayName }}
-          </a-menu-item>
-        </template>
-      </a-menu>
-    </a-layout-header>
-    <a-layout-content style="padding: 0 50px; background-color: white">
+  <div class="layout" style="min-height: 100vh">
+    <div style="padding: 0 50px; background-color: white">
       <router-view />
-    </a-layout-content>
-    <a-layout-footer style="text-align: center">
-      todo list 实战应用，用于测试vue3，和组件库新特性
-    </a-layout-footer>
-  </a-layout>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -35,11 +17,10 @@ import {
   watchEffect
 } from 'vue';
 
-import { Menu, Layout } from 'ant-design-vue';
 import { useRouter } from 'vue-router';
 import { registeComp } from './utils/comp';
 
-registeComp(Layout);
+// registeComp(Layout);
 
 interface Nav {
   key: string;
@@ -63,26 +44,6 @@ export default defineComponent({
   },
   setup() {
     const navs: Nav[] = [
-      {
-        key: '/tsx',
-        path: '/todo-tsx',
-        displayName: 'antd-define-tsx'
-      },
-      {
-        key: '/tmpl',
-        path: '/tmpl',
-        displayName: 'antd-script-tmpl'
-      },
-      // {
-      //   key: "/script-tsx",
-      //   path: "/script-tsx",
-      //   displayName: "antd-script-tsx(回显有问题)",
-      // },
-      {
-        key: '/elem-tmpl',
-        path: '/elem-tmpl',
-        displayName: 'elem-tmpl'
-      },
       {
         key: '/naive-tmpl',
         path: '/naive-tmpl',

@@ -6,13 +6,10 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 import usePluginImport from "vite-plugin-importer";
 import ViteComponents from "unplugin-vue-components/vite";
 import {
-  AntDesignVueResolver,
-  ElementPlusResolver,
   NaiveUiResolver,
 } from "unplugin-vue-components/resolvers";
 import { generateModifyVars } from "./build/style/generateModifyVars";
 
-import ElementPlus from "unplugin-element-plus/vite";
 // https://vitejs.dev/config/
 interface IMatcher {
   pattern: RegExp;
@@ -30,22 +27,11 @@ export default defineConfig({
     ViteComponents({
       // dirs: ['./components', './', , 'src/components'],
       resolvers: [
-        AntDesignVueResolver({
-          resolveIcons: true,
-        }),
-        ElementPlusResolver({
-          importStyle: "css",
-        }),
         NaiveUiResolver(),
       ],
       // globalComponentsDeclaration: true,
     }),
     //tsx用
-    usePluginImport({
-      libraryName: "ant-design-vue",
-      libraryDirectory: "es",
-      style: "css",
-    }),
   ],
   resolve: {
     alias: [
